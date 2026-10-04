@@ -1,0 +1,473 @@
+/* ========== COLOR VARIABLES ========== */
+/* Store colors once here, then reuse them with var(--name) */
+:root {
+    --bg-main: #121212;
+    --bg-card: #181818;
+    --bg-card-hover: #262626;
+    --bg-input: #2a2a2a;
+    --green: #1ed760;
+    --green-light: #3be477;
+    --text-main: #ffffff;
+    --text-muted: #b3b3b3;
+}
+
+/* ========== RESET & BASE ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* ========== SIDEBAR ========== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: calc(100vh - 90px);   /* full height minus the player bar */
+    background-color: #000000;
+    padding: 24px 16px;
+    overflow-y: auto;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--green);
+    margin-bottom: 28px;
+    padding-left: 12px;
+}
+
+.nav-link {
+    display: block;
+    padding: 12px;
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-weight: 700;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--text-main);
+    background-color: #1f1f1f;
+}
+
+.sidebar-section {
+    margin-top: 28px;
+}
+
+.sidebar-heading {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #6a6a6a;
+    padding-left: 12px;
+    margin-bottom: 8px;
+}
+
+/* ========== MAIN CONTENT AREA ========== */
+.main-content {
+    margin-left: 240px;           /* leave room for the sidebar */
+    padding-bottom: 110px;        /* leave room for the player bar */
+}
+
+/* ========== TOP NAVBAR ========== */
+.top-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 32px;
+    background-color: var(--bg-main);
+}
+
+.search-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 20px;
+    border: 2px solid transparent;
+    border-radius: 30px;
+    background-color: var(--bg-input);
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.search-input:hover {
+    background-color: #333333;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--green);
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+/* ========== BUTTONS ========== */
+.btn {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: transform 0.15s, background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btn:hover {
+    transform: scale(1.04);       /* grow slightly */
+}
+
+.btn:active {
+    transform: scale(0.97);       /* shrink when pressed */
+}
+
+.btn-text {
+    background: none;
+    color: var(--text-muted);
+}
+
+.btn-text:hover {
+    color: var(--text-main);
+}
+
+.btn-primary {
+    background-color: var(--green);
+    color: #000000;
+}
+
+.btn-primary:hover {
+    background-color: var(--green-light);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid #b3b3b3;
+}
+
+.btn-outline:hover {
+    border-color: var(--text-main);
+}
+
+.btn-large {
+    padding: 14px 32px;
+    font-size: 1rem;
+}
+
+/* ========== HERO BANNER ========== */
+.hero {
+    margin: 8px 32px 16px;
+    padding: 48px 40px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #6c3fc5, #d94f9b);
+}
+
+.hero-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.8;
+    margin-bottom: 8px;
+}
+
+.hero-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.hero-text {
+    font-size: 1.05rem;
+    max-width: 480px;
+    opacity: 0.9;
+    margin-bottom: 28px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* ========== SECTIONS ========== */
+.content-section {
+    padding: 16px 32px;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+/* A grid that fits as many cards per row as the screen allows */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 20px;
+}
+
+/* ========== MUSIC & ARTIST CARDS ========== */
+.music-card,
+.artist-card {
+    background-color: var(--bg-card);
+    padding: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.music-card:hover,
+.artist-card:hover {
+    background-color: var(--bg-card-hover);
+    transform: translateY(-4px);  /* lift the card up */
+}
+
+.artist-card {
+    text-align: center;
+}
+
+/* Wrapper lets us place the play button on top of the artwork */
+.card-art-wrapper {
+    position: relative;
+    margin-bottom: 14px;
+}
+
+.card-art,
+.artist-art {
+    width: 100%;
+    aspect-ratio: 1 / 1;          /* keeps the box a perfect square */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.2rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.card-art {
+    border-radius: 8px;
+}
+
+.artist-art {
+    border-radius: 50%;           /* makes it a circle */
+}
+
+/* Green play button that appears when you hover over a card */
+.card-play-btn {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--green);
+    color: #000000;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    opacity: 0;                   /* hidden by default */
+    transform: translateY(10px);  /* sitting slightly lower */
+    transition: opacity 0.25s, transform 0.25s, background-color 0.2s;
+}
+
+.music-card:hover .card-play-btn,
+.artist-card:hover .card-play-btn {
+    opacity: 1;                   /* visible when the card is hovered */
+    transform: translateY(0);     /* slides up into place */
+}
+
+.music-card:hover .card-play-btn:hover,
+.artist-card:hover .card-play-btn:hover {
+    transform: scale(1.08);
+    background-color: var(--green-light);
+}
+
+/* Long titles get "..." instead of breaking the layout */
+.card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* ========== ALBUM ARTWORK GRADIENTS ========== */
+.art-purple { background: linear-gradient(135deg, #8e5cf0, #4a2a9c); }
+.art-blue   { background: linear-gradient(135deg, #4a90f0, #1d4fa3); }
+.art-orange { background: linear-gradient(135deg, #ff9a3c, #c2531a); }
+.art-pink   { background: linear-gradient(135deg, #ff6fb5, #a8306f); }
+.art-teal   { background: linear-gradient(135deg, #2fd0b5, #12695d); }
+.art-red    { background: linear-gradient(135deg, #ff5c5c, #8f1f1f); }
+
+/* ========== BOTTOM PLAYER BAR ========== */
+.player-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    background-color: var(--bg-card);
+    border-top: 1px solid #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    z-index: 20;
+}
+
+.player-song-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 30%;
+}
+
+.player-art {
+    width: 56px;
+    height: 56px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+}
+
+.player-song-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.player-song-artist {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.player-center {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-size: 1.3rem;
+    transition: color 0.2s, transform 0.15s;
+}
+
+.control-btn:hover {
+    color: var(--green);
+    transform: scale(1.1);
+}
+
+.play-btn {
+    background-color: #ffffff;
+    color: #000000;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+}
+
+.play-btn:hover {
+    background-color: var(--green);
+    color: #000000;
+}
+
+.progress-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.time-text {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.progress-bar {
+    flex: 1;
+    accent-color: var(--green);
+}
+
+.player-volume {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.volume-bar {
+    width: 100px;
+    accent-color: var(--green);
+}
+
+/* ========== CURRENTLY PLAYING CARD (Step 6) ========== */
+.music-card.playing .card-title {
+    color: var(--green);
+}
+
+.music-card.playing .card-play-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ========== SEARCH (Step 7) ========== */
+/* The "no songs found" message stretches across the whole grid */
+.no-results {
+    grid-column: 1 / -1;
+    color: var(--text-muted);
+    padding: 24px 0;
+}
